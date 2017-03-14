@@ -4,7 +4,7 @@ target 'facebook-app-link-crash-demo' do
   # Pods for facebook-app-link-crash-demo
 
   def crashing
-    pod 'FBSDKCoreKit', '~> 4.20'
+    pod 'FBSDKCoreKit', '4.20.0'
   end
 
   def not_crashing
@@ -13,7 +13,7 @@ target 'facebook-app-link-crash-demo' do
           :branch => 'bugfix/app-link-null-target-url-crash'
   end
 
-  not_crashing
+  crashing
 
   target 'facebook-app-link-crash-demoTests' do
     inherit! :search_paths
