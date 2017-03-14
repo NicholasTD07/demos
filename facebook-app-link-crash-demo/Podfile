@@ -1,0 +1,26 @@
+target 'facebook-app-link-crash-demo' do
+  use_frameworks!
+
+  # Pods for facebook-app-link-crash-demo
+
+  def crashing
+    pod 'FBSDKCoreKit', '~> 4.20'
+  end
+
+  def not_crashing
+        pod 'FBSDKCoreKit',
+          :git => 'https://github.com/NicholasTD07/facebook-ios-sdk.git',
+          :branch => 'bugfix/app-link-null-target-url-crash'
+  end
+
+  not_crashing
+
+  target 'facebook-app-link-crash-demoTests' do
+    inherit! :search_paths
+  end
+
+  target 'facebook-app-link-crash-demoUITests' do
+    inherit! :search_paths
+  end
+
+end
