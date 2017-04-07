@@ -7,13 +7,15 @@
 # you're doing.
 Vagrant.configure("2") do |config|
   config.vm.box = "freebsd/FreeBSD-11.0-STABLE"
-  config.vm.base_mac = "08:00:27:d1:cc:74"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
   config.ssh.shell = "/usr/local/bin/fish"
   config.ssh.shell = "sh"
 
   # config.vm.provider "virtualbox" do |vb|
   #   vb.gui = true
   # end
+  # config.vm.base_mac = "08:00:27:d1:cc:74"
 
   config.vm.provision "shell", inline: <<-SHELL
     freebsd-update fetch
@@ -22,5 +24,9 @@ Vagrant.configure("2") do |config|
     pkg upgrade -f
     pkg install -y fish git neovim
     chsh -s /usr/local/bin/fish vagrant
+    cd /home/vagrant/
+    su vagrant -c "git init"
+    su vagrant -c "git remote add origin https://github.com/NicholasTD07/dotfiles.git"
+    su vagrant -c "git pull origin master"
   SHELL
 end
