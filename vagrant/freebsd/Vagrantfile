@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   # config.vm.provider "virtualbox" do |vb|
   #   vb.gui = true
   # end
-  # config.vm.base_mac = "08:00:27:d1:cc:74"
+  config.vm.base_mac = "08:00:27:d1:cc:74"
 
   config.vm.provision "shell", inline: <<-SHELL
     freebsd-update fetch
