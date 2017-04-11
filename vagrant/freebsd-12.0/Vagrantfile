@@ -7,7 +7,9 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
 
   config.vm.base_mac = "08:00:27:d1:cc:74"
-  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder ".", "/vagrant/", disabled: true
+  config.vm.synced_folder "./scripts/", "/vagrant/scripts", type: "rsync"
+  # config.vm.synced_folder "~/Library/Application Support/minecraft/saves/Backups/", "/vagrant/backups", type: "rsync"
 
   config.ssh.shell = "/usr/local/bin/fish"
   # config.ssh.shell = "sh" # enable this for the first time
