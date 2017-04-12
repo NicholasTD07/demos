@@ -13,6 +13,18 @@ Vagrant.configure("2") do |config|
 
   config.ssh.shell = "sh"
 
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = 'freebsd-zfs'
+
+    current_dir = File.dirname(File.expand_path(__FILE__))
+    file_to_disk = File.join(current_dir, 'disk.vdi')
+
+    if not File.exist?(file_to_disk)
+      vb.customize ['createhd', '--filename', file_to_disk, '--size',  20 * 1024]
+    end
+    vb.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
+  end
+
   config.vm.provision "shell", inline: <<-SHELL
     freebsd-update fetch
     freebsd-update install
