@@ -33,9 +33,9 @@ if __name__ == '__main__':
     #     print(save)
     #     print(date_string_for(time))
 
-    copy_command_template = 'cp -rv {} /test/snapshots/the_world'
     def copy_command_for(save):
         return ['cp', '-rv', save, '/test/snapshots/the_world']
+    
     snapshot_template = "sudo zfs snapshot test/snapshots@{}"
 
     import subprocess
