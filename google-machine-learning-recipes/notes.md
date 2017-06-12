@@ -16,3 +16,16 @@ Ideal features are
 - Independent
 - Simple
 
+### Notes
+
+
+#### KNN
+
+k nearest neighbours
+
+Pro
+- Relatively simple
+
+Cons
+- Computationally intensive
+- Hard to represent relationships between features
