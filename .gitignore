@@ -1,4 +1,8 @@
-#Xcode
+# Python
+
+**/venv/
+
+# Xcode
 
 xcuserdata/
 
